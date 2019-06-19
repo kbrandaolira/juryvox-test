@@ -3,7 +3,7 @@
     {
       "number": 1,
       "origin": "Rio de Janeiro",
-      "destination": "São Paulo",
+      "destination": "Minas Gerais",
       "departure_time": "8:00",
       "arrival_time": "8:45"
     },
@@ -16,7 +16,7 @@
     },
     {
       "number": 3,
-      "origin": "São Paulo",
+      "origin": "Minas Gerais",
       "destination": "Salvador",
       "departure_time": "9:00",
       "arrival_time": "10:25"
@@ -24,7 +24,7 @@
     {
       "number": 4,
       "origin": "Recife",
-      "destination": "Brasília",
+      "destination": "Manaus",
       "departure_time": "10:30",
       "arrival_time": "11:35"
     },
@@ -39,7 +39,7 @@
   "passengers": [
     {
       "national_id": 1,
-      "name": "André Luís Sousa",
+      "name": "Andre Luis Sousa",
       "gender": "Male"
     },
     {
@@ -59,12 +59,12 @@
     },
     {
       "national_id": 5,
-      "name": "Natália Jalles",
+      "name": "Natalia Jalles",
       "gender": "Female"
     },
     {
       "national_id": 6,
-      "name": "PEdro Paulo Almeida",
+      "name": "Pedro Paulo Almeida",
       "gender": "Male"
     }
   ],
