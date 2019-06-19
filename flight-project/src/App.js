@@ -1,12 +1,14 @@
 import React from 'react';
 import './App.css';
-import Header from './Header/Header.js'
+import Header from './Header/Header'
+import Flights from './Flights/Flights'
 
 function App() {
   return (
-    <div className="App">
+    <body className="App">
       <Header/>
-    </div>
+      <Flights/>
+    </body>
   );
 }
 

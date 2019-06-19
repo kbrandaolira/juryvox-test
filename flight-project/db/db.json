@@ -1,0 +1,98 @@
+{
+  "flights": [
+    {
+      "number": 1,
+      "origin": "Rio de Janeiro",
+      "destination": "São Paulo",
+      "departure_time": "8:00",
+      "arrival_time": "8:45"
+    },
+    {
+      "number": 2,
+      "origin": "Rio de Janeiro",
+      "destination": "Porto Alegre",
+      "departure_time": "8:00",
+      "arrival_time": "10:15"
+    },
+    {
+      "number": 3,
+      "origin": "São Paulo",
+      "destination": "Salvador",
+      "departure_time": "9:00",
+      "arrival_time": "10:25"
+    },
+    {
+      "number": 4,
+      "origin": "Recife",
+      "destination": "Brasília",
+      "departure_time": "10:30",
+      "arrival_time": "11:35"
+    },
+    {
+      "number": 5,
+      "origin": "Rio de Janeiro",
+      "destination": "Miami",
+      "departure_time": "22:00",
+      "arrival_time": "9:00"
+    }
+  ],
+  "passengers": [
+    {
+      "national_id": 1,
+      "name": "André Luís Sousa",
+      "gender": "Male"
+    },
+    {
+      "national_id": 2,
+      "name": "Elisa Bedim",
+      "gender": "Female"
+    },
+    {
+      "national_id": 3,
+      "name": "Kayan Lira",
+      "gender": "Male"
+    },
+    {
+      "national_id": 4,
+      "name": "Natacha Salvador",
+      "gender": "Female"
+    },
+    {
+      "national_id": 5,
+      "name": "Natália Jalles",
+      "gender": "Female"
+    },
+    {
+      "national_id": 6,
+      "name": "PEdro Paulo Almeida",
+      "gender": "Male"
+    }
+  ],
+  "tickets": [
+    {
+      "national_id": 1,
+      "flight_number": 1,
+      "seat": "A1"
+    },
+    {
+      "national_id": 1,
+      "flight_number": 2,
+      "seat": "A2"
+    },
+    {
+      "national_id": 1,
+      "flight_number": 3,
+      "seat": "A3"
+    },
+    {
+      "national_id": 1,
+      "flight_number": 4,
+      "seat": "A4"
+    },
+    {
+      "national_id": 3,
+      "flight_number": 1,
+      "seat": "A5"
+    }
+  ]
+}
