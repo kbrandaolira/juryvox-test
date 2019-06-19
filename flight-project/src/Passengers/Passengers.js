@@ -11,6 +11,10 @@ class Passengers extends React.Component {
     }
 
     componentDidMount() {
+        document.getElementById("li-flights").classList.remove("active");
+        document.getElementById("li-tickets").classList.remove("active");
+        document.getElementById("li-passengers").classList.add("active");
+
         fetch("http://localhost:3000/passengers")
         .then(res => res.json())
         .then(
@@ -38,7 +42,7 @@ class Passengers extends React.Component {
             return <div>Loading...</div>
         } else {
             return <div>
-                        <table class="table table-striped">
+                        <table className="table table-striped">
                             <thead>
                                 <tr>
                                     <th>National ID</th>

@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import Header from './Header/Header'
-import Flights from './Flights/Flights'
+import Routes from './routes';
 
-function App() {
-  return (
-    <body className="App">
-      <Header/>
-      <Flights/>
-    </body>
-  );
+class App extends Component {
+
+  constructor(){
+    super();
+    this.state={
+      appName: "NYK Airlines",
+    }
+  }
+
+  render(){
+    return  <body className="App">
+              <Header/>
+              <Routes name={this.state.appName}/>
+            </body>
+  }
+
 }
 
 export default App;
