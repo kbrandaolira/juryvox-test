@@ -1,7 +1,6 @@
 import React, {Component}  from 'react';
-import '../App.css';
 
-class Flights extends React.Component {
+class Passengers extends React.Component {
     constructor(){
         super();
         this.state = {
@@ -12,13 +11,13 @@ class Flights extends React.Component {
     }
 
     componentDidMount() {
-        fetch("http://localhost:3000/flights")
+        fetch("http://localhost:3000/passengers")
         .then(res => res.json())
         .then(
             (result) => {
                 this.setState({
                     isLoaded: true,
-                    flights: result
+                    passengers: result
                 });
             },
             (error) => {
@@ -31,42 +30,41 @@ class Flights extends React.Component {
     }
 
     render() {
-        const { error, isLoaded, flights } = this.state;
+        const { error, isLoaded, passengers } = this.state;
 
         if(error){
             return <div>Error: {error.message}</div>
         } else if(!isLoaded){
             return <div>Loading...</div>
         } else {
-            return  <div>
+            return <div>
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>Number</th>
-                                    <th>Origin</th>
-                                    <th>Destination</th>
-                                    <th>Departure Time</th>
-                                    <th>Arrival Time</th>
+                                    <th>National ID</th>
+                                    <th>Name</th>
+                                    <th>Gender</th>
+                                    <th>Is Suspect?</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {flights.map(flight => (
+                                {passengers.map(passenger => (
                                     <tr>
-                                        <td>{flight.number}</td>
-                                        <td>{flight.origin}</td>
-                                        <td>{flight.destination}</td>
-                                        <td>{flight.departure_time}</td>
-                                        <td>{flight.arrival_time}</td>
+                                        <td>{passenger.national_id}</td>
+                                        <td>{passenger.name}</td>
+                                        <td>{passenger.gender}</td>
+                                        <td><checkbox disabled/></td>
                                         <td><a href="#">Edit</a> / <a href="#">Delete</a></td>
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
-                        <input className="btn btn-success new-btn" value="New Flight" type="button"/>
-                </div>
+                        <input className="btn btn-success new-btn" value="New Passenger" type="button"/>
+                    </div>
+                    
         }
     }
 }
 
-export default Flights;
+export default Passengers;
