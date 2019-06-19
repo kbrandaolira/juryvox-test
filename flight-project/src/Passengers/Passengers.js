@@ -58,7 +58,7 @@ class Passengers extends React.Component {
                                         <td>{passenger.national_id}</td>
                                         <td>{passenger.name}</td>
                                         <td>{passenger.gender}</td>
-                                        <td><checkbox disabled/></td>
+                                        <td><input type="checkbox" disabled/></td>
                                         <td><a href="#">Edit</a> / <a href="#">Delete</a></td>
                                     </tr>
                                 ))}
