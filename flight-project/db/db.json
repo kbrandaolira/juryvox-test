@@ -4,29 +4,36 @@
       "id": 1,
       "origin": "Rio de Janeiro",
       "destination": "Belo Horizonte",
-      "departure_time": "8:00",
-      "arrival_time": "9:15"
+      "departure_time": "20/06/2019 8:00",
+      "arrival_time": "20/06/2019 9:15"
     },
     {
       "id": 2,
       "origin": "Rio de Janeiro",
       "destination": "Porto Alegre",
-      "departure_time": "8:00",
-      "arrival_time": "10:15"
+      "departure_time": "20/06/2019 8:00",
+      "arrival_time": "20/06/2019 10:15"
     },
     {
       "id": 3,
       "origin": "Minas Gerais",
       "destination": "Salvador",
-      "departure_time": "9:00",
-      "arrival_time": "10:25"
+      "departure_time": "20/06/2019 9:00",
+      "arrival_time": "20/06/2019 10:25"
     },
     {
       "id": 4,
       "origin": "Recife",
       "destination": "Manaus",
-      "departure_time": "10:30",
-      "arrival_time": "11:35"
+      "departure_time": "20/06/2019 10:30",
+      "arrival_time": "20/06/2019 11:35"
+    },
+    {
+      "id": 5,
+      "origin": "Rio de Janeiro",
+      "destination": "Miami",
+      "departure_time": "20/06/2019 22:00",
+      "arrival_time": "21/06/2019 9:15"
     }
   ],
   "passengers": [

@@ -1,6 +1,7 @@
 import React, {Component}  from 'react';
 import { properties } from '../properties';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '../utils.js';
 
 class Passengers extends React.Component {
     constructor(){
@@ -60,7 +61,13 @@ class Passengers extends React.Component {
                                         <td>{passenger.id}</td>
                                         <td>{passenger.name}</td>
                                         <td>{passenger.gender}</td>
-                                        <td><input type="checkbox" disabled/></td>
+                                        <td>
+                                            {
+                                                this.isSuspect(passenger) ? 
+                                                <input checked disabled type='checkbox'/> : 
+                                                <input disabled type='checkbox'/>
+                                            }
+                                        </td>
                                         <td>
                                             <button title="Edit"><FontAwesomeIcon icon="edit"/></button> &nbsp;
                                             <button title="Delete" onClick={(e)=>this.remove(passenger)}><FontAwesomeIcon icon="trash-alt"/></button>
@@ -73,6 +80,47 @@ class Passengers extends React.Component {
                     </div>
                     
         }
+    }
+
+    isSuspect(passenger){
+        fetch(properties.base_url + "tickets?passenger_id=" + passenger.id)
+        .then(res => res.json())
+        .then(
+            (tickets) => {
+                let flights = new Array();
+                let i;
+
+                for( i=0; i<tickets.length; i++ ){
+                    fetch(properties.base_url + "flights/" + tickets[i].flight_id)
+                    .then(res2 => res2.json())
+                    .then(
+                        (flight) => {
+                            let fields = flight.departure_time.split(" ");
+                            let date = fields[0].split("/");
+                            let time = fields[1].split(":");
+
+                            let result = new Date(date[2], (date[1]-1), date[0], time[0], time[1])
+                            let now = new Date();
+
+                            let timeDiff = Math.abs(now.getTime() - result.getTime());
+                            let dayDifference = Math.ceil(timeDiff / (1000 * 3600 * 24));
+                            
+                            if( dayDifference <= 30 ){
+                                flight.departure_time = result;
+                                flights.push(flight);
+                            }
+                        }
+                    )
+                }
+                setTimeout(function(){ 
+                    if(flights.length>=3){
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }, 100);
+            }
+        )
     }
 
     remove(passenger){
