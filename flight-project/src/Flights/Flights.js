@@ -18,7 +18,7 @@ class Flights extends React.Component {
         document.getElementById("li-tickets").classList.remove("active");
         document.getElementById("li-passengers").classList.remove("active");
 
-        fetch( properties.base_url + "flights" )
+        fetch( properties.api_url + "flights" )
         .then(res => res.json())
         .then(
             (result) => {
@@ -81,14 +81,14 @@ class Flights extends React.Component {
 
     remove(flight){
         
-        fetch(properties.base_url + "tickets?flight_id=" + flight.id)
+        fetch(properties.api_url + "tickets?flight_id=" + flight.id)
         .then(res => res.json())
         .then(
             (tickets) => {
                 if(Object.keys(tickets).length > 0){
                     alert("There are tickets with this flight. You can't remove.")
                 } else {
-                    fetch(properties.base_url + "flights/" + flight.id, {
+                    fetch(properties.api_url + "flights/" + flight.id, {
                         method: "DELETE"
                     })
                     .then(res => res.json())

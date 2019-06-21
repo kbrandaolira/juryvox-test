@@ -2,6 +2,7 @@ import React, {Component}  from 'react';
 import { properties } from '../properties';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../utils.js';
+import PassengerUpdate from '../PassengerUpdate/PassengerUpdate';
 
 class Passengers extends React.Component {
     constructor(){
@@ -18,7 +19,7 @@ class Passengers extends React.Component {
         document.getElementById("li-tickets").classList.remove("active");
         document.getElementById("li-passengers").classList.add("active");
 
-        fetch(properties.base_url + "passengers")
+        fetch(properties.api_url + "passengers")
         .then(res => res.json())
         .then(
             (result) => {
@@ -76,14 +77,14 @@ class Passengers extends React.Component {
                                 ))}
                             </tbody>
                         </table>
-                        <input className="btn btn-success new-btn" value="New Passenger" type="button"/>
+                        <PassengerUpdate buttonLabel="New Passenger"/>
                     </div>
                     
         }
     }
 
     isSuspect(passenger){
-        fetch(properties.base_url + "tickets?passenger_id=" + passenger.id)
+        fetch(properties.api_url + "tickets?passenger_id=" + passenger.id)
         .then(res => res.json())
         .then(
             (tickets) => {
@@ -91,7 +92,7 @@ class Passengers extends React.Component {
                 let i;
 
                 for( i=0; i<tickets.length; i++ ){
-                    fetch(properties.base_url + "flights/" + tickets[i].flight_id)
+                    fetch(properties.api_url + "flights/" + tickets[i].flight_id)
                     .then(res2 => res2.json())
                     .then(
                         (flight) => {
@@ -125,14 +126,14 @@ class Passengers extends React.Component {
 
     remove(passenger){
         
-        fetch(properties.base_url + "tickets?passenger_id=" + passenger.id)
+        fetch(properties.api_url + "tickets?passenger_id=" + passenger.id)
         .then(res => res.json())
         .then(
             (tickets) => {
                 if(Object.keys(tickets).length > 0){
                     alert("There are tickets with this passenger. You can't remove.")
                 } else {
-                    fetch(properties.base_url + "passengers/" + passenger.id, {
+                    fetch(properties.api_url + "passengers/" + passenger.id, {
                         method: "DELETE"
                     })
                     .then(res => res.json())

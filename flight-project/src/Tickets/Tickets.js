@@ -17,7 +17,7 @@ class Tickets extends React.Component {
         document.getElementById("li-tickets").classList.add("active");
         document.getElementById("li-passengers").classList.remove("active");
 
-        fetch(properties.base_url + "tickets")
+        fetch(properties.api_url + "tickets")
         .then(res => res.json())
         .then(
             (result) => {
@@ -73,7 +73,7 @@ class Tickets extends React.Component {
     }
 
     remove(ticket){
-        fetch(properties.base_url + "tickets/" + ticket.id, {
+        fetch(properties.api_url + "tickets/" + ticket.id, {
             method: "DELETE"
         })
         .then(res => res.json())
