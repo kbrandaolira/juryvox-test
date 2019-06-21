@@ -60,7 +60,7 @@ class Passengers extends React.Component {
                                         <td>{passenger.name}</td>
                                         <td>{passenger.gender}</td>
                                         <td><input type="checkbox" disabled/></td>
-                                        <td><a href="#">Edit</a> / <a href="#">Delete</a></td>
+                                        <td><a href="#">Edit</a> / <a onClick={(e)=>this.remove(passenger)} href="#">Delete</a></td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -69,6 +69,35 @@ class Passengers extends React.Component {
                     </div>
                     
         }
+    }
+
+    remove(passenger){
+        
+        fetch(properties.base_url + "tickets?passenger_id=" + passenger.id)
+        .then(res => res.json())
+        .then(
+            (tickets) => {
+                if(Object.keys(tickets).length > 0){
+                    alert("There are tickets with this passenger. You can't remove.")
+                } else {
+                    fetch(properties.base_url + "passengers/" + passenger.id, {
+                        method: "DELETE"
+                    })
+                    .then(res => res.json())
+                    .then(
+                        (result) => {
+                            console.log(result);
+                            this.componentDidMount();
+                        },
+                        (error) => {
+                            console.log(error);
+                            alert("Sorry. We had a problem when tried to remove data.")
+                        }
+                    )
+                }
+            }
+        )
+
     }
 }
 
