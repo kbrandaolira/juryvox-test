@@ -55,21 +55,22 @@ class FlightUpdate extends React.Component {
           <ModalHeader toggle={this.toggle}>New Flight</ModalHeader>
           <form id="passenger-form">
             <ModalBody>
+                <input value={flight != null ? flight.id : ""} type="hidden" name="id" id="id"/>
                 <div class="form-group">
                   <label htmlFor="origin">Origin</label>
-                  <input name="origin" maxLength="100" type="text" class="form-control" id="origin"/>
+                  <input defaultValue={flight != null ? flight.origin : ""} name="origin" maxLength="100" type="text" class="form-control" id="origin"/>
                 </div>
                 <div class="form-group">
                   <label htmlFor="destination">Destination</label>
-                  <input name="destination" maxLength="100" type="text" class="form-control" id="destination"/>
+                  <input defaultValue={flight != null ? flight.destination : ""} name="destination" maxLength="100" type="text" class="form-control" id="destination"/>
                 </div>
                 <div class="form-group">
                   <label htmlFor="departure">Departure Time</label>
-                  <input name="departure" maxLength="100" type="text" class="form-control" id="departure"/>
+                  <input defaultValue={flight != null ? flight.departure_time : ""} name="departure" maxLength="100" type="text" class="form-control" id="departure"/>
                 </div>
                 <div class="form-group">
                   <label htmlFor="arrival">Arrival Time</label>
-                  <input name="arrival" maxLength="100" type="text" class="form-control" id="arrival"/>
+                  <input defaultValue={flight != null ? flight.arrival_time : ""} name="arrival" maxLength="100" type="text" class="form-control" id="arrival"/>
                 </div>
             </ModalBody>
             <ModalFooter>
@@ -84,8 +85,14 @@ class FlightUpdate extends React.Component {
 
   handleSubmit(){
     var callBack = this.props.callBack;
-    fetch(properties.api_url + "flights/", {
-      method: "POST",
+    var method = "POST";
+
+    if($("#id").val() != ""){
+      method = "PATCH";
+    }
+
+    fetch(properties.api_url + "flights/" + $("#id").val(), {
+      method: method,
       body: JSON.stringify({"origin":$("#origin").val(),"destination":$("#destination").val(),"departure_time":$("#departure").val(),"arrival_time":$("#arrival").val()}),
       headers: {
         'Content-Type': 'application/json'
