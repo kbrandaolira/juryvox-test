@@ -42,7 +42,6 @@ class FlightUpdate extends React.Component {
 
   render() {
     const { error, isLoaded, flight } = this.state;
-    console.log(flight);
     return (
       <div>
         {
