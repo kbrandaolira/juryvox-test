@@ -1,4 +1,5 @@
 import React, {Component}  from 'react';
+import { properties } from '../properties';
 
 class Passengers extends React.Component {
     constructor(){
@@ -15,7 +16,7 @@ class Passengers extends React.Component {
         document.getElementById("li-tickets").classList.remove("active");
         document.getElementById("li-passengers").classList.add("active");
 
-        fetch("http://localhost:3000/passengers")
+        fetch(properties.base_url + "passengers")
         .then(res => res.json())
         .then(
             (result) => {
@@ -45,7 +46,7 @@ class Passengers extends React.Component {
                         <table className="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>National ID</th>
+                                    <th>ID</th>
                                     <th>Name</th>
                                     <th>Gender</th>
                                     <th>Is Suspect?</th>
@@ -55,7 +56,7 @@ class Passengers extends React.Component {
                             <tbody>
                                 {passengers.map(passenger => (
                                     <tr>
-                                        <td>{passenger.national_id}</td>
+                                        <td>{passenger.id}</td>
                                         <td>{passenger.name}</td>
                                         <td>{passenger.gender}</td>
                                         <td><input type="checkbox" disabled/></td>

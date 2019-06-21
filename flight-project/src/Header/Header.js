@@ -1,8 +1,4 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import Flights from '../Flights/Flights';
-import Passengers from '../Passengers/Passengers';
-import Tickets from '../Tickets/Tickets';
 
 const header = () => {
     return   <div>
@@ -17,10 +13,10 @@ const header = () => {
                             <li id="li-flights" className="nav-item active">
                                 <a className="nav-link" href="/">Flights</a>
                             </li>
-                            <li id="li-passengers" class="nav-item">
+                            <li id="li-passengers" className="nav-item">
                                 <a className="nav-link" href="/passengers">Passengers</a>
                             </li>
-                            <li id="li-tickets" class="nav-item">
+                            <li id="li-tickets" className="nav-item">
                                 <a className="nav-link" href="/tickets">Tickets</a>
                             </li>
                         </ul>

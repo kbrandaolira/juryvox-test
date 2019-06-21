@@ -1,5 +1,6 @@
 import React, {Component}  from 'react';
 import '../App.css';
+import { properties } from '../properties';
 
 class Flights extends React.Component {
     constructor(){
@@ -16,7 +17,7 @@ class Flights extends React.Component {
         document.getElementById("li-tickets").classList.remove("active");
         document.getElementById("li-passengers").classList.remove("active");
 
-        fetch("http://localhost:3000/flights")
+        fetch( properties.base_url + "flights" )
         .then(res => res.json())
         .then(
             (result) => {
@@ -57,19 +58,50 @@ class Flights extends React.Component {
                             <tbody>
                                 {flights.map(flight => (
                                     <tr>
-                                        <td>{flight.number}</td>
+                                        <td>{flight.id}</td>
                                         <td>{flight.origin}</td>
                                         <td>{flight.destination}</td>
                                         <td>{flight.departure_time}</td>
                                         <td>{flight.arrival_time}</td>
-                                        <td><a href="#">Edit</a> / <a href="#">Delete</a></td>
+                                        <td><a href="#">Edit</a> / <a onClick={(e)=>this.remove(flight)} href="#">Delete</a></td>
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
                         <input className="btn btn-success new-btn" value="New Flight" type="button"/>
+
+                        
                 </div>
         }
+    }
+
+    remove(flight){
+        
+        fetch(properties.base_url + "tickets?flight_id=" + flight.id)
+        .then(res => res.json())
+        .then(
+            (tickets) => {
+                if(Object.keys(tickets).length > 0){
+                    alert("There are tickets with this flight. You can't remove.")
+                } else {
+                    fetch(properties.base_url + "flights/" + flight.id, {
+                        method: "DELETE"
+                    })
+                    .then(res => res.json())
+                    .then(
+                        (result) => {
+                            console.log(result);
+                            this.componentDidMount();
+                        },
+                        (error) => {
+                            console.log(error);
+                            alert("Sorry. We had a problem when tried to remove data.")
+                        }
+                    )
+                }
+            }
+        )
+
     }
 }
 
