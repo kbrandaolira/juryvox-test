@@ -17,11 +17,11 @@ class App extends Component {
   }
 
   render(){
-    return  <body className="App">
+    return  <div className="App">
               <Header/>
               <Routes name={this.state.appName}/>
               <Footer/>
-            </body>
+            </div>
   }
 
 }

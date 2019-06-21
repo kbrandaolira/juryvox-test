@@ -32,7 +32,7 @@ class TicketUpdate extends React.Component {
                 <PassengerSelect></PassengerSelect>
                 <FlightSelect></FlightSelect>
                 <div class="form-group">
-                  <label for="seat">Seat</label>
+                  <label htmlFor="seat">Seat</label>
                   <input name="seat" maxLength="10" type="text" class="form-control" id="seat"/>
                 </div>
             </ModalBody>

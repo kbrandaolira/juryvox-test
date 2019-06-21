@@ -28,11 +28,11 @@ class PassengerUpdate extends React.Component {
           <form id="passenger-form">
             <ModalBody>
                 <div class="form-group">
-                  <label for="name">Name</label>
+                  <label htmlFor="name">Name</label>
                   <input name="name" maxLength="100" type="text" class="form-control" id="name"/>
                 </div>
                 <div class="form-group">
-                  <label for="gender">Gender</label>
+                  <label htmlFor="gender">Gender</label>
                   <select name="gender" class="form-control" id="gender">
                     <option value="">Select</option>
                     <option value="Male">Male</option>

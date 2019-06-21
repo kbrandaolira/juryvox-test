@@ -35,7 +35,7 @@ class FlightSelect extends React.Component {
         const { error, isLoaded, flights } = this.state;
         return (
             <div class="form-group">
-                <label for="flights">Flight</label>
+                <label htmlFor="flights">Flight</label>
                 <select name="flights" class="form-control" id="flights">
                     <option value="">Select</option>
                     {flights.map(flight => (
