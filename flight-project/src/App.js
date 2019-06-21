@@ -12,7 +12,7 @@ class App extends Component {
     super();
     library.add(faEdit, faTrashAlt)
     this.state={
-      appName: "NYK Airlines",
+      appName: "Juryvox Airlines",
     }
   }
 
