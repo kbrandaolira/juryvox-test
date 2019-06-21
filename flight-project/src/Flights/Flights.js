@@ -2,6 +2,7 @@ import React, {Component}  from 'react';
 import '../App.css';
 import { properties } from '../properties';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import FlightUpdate from '../FlightUpdate/FlightUpdate';
 
 class Flights extends React.Component {
     constructor(){
@@ -72,9 +73,7 @@ class Flights extends React.Component {
                                 ))}
                             </tbody>
                         </table>
-                        <input className="btn btn-success new-btn" value="New Flight" type="button"/>
-
-                        
+                        <FlightUpdate buttonLabel="New Flight" callBack={this.componentDidMount.bind(this)}/>
                 </div>
         }
     }
