@@ -58,7 +58,7 @@ class Tickets extends React.Component {
                                         <td>{ticket.passenger_id}</td>
                                         <td>{ticket.flight_id}</td>
                                         <td>{ticket.seat}</td>
-                                        <td><a href="#">Edit</a> / <a href="#">Delete</a></td>
+                                        <td><a href="#">Edit</a> / <a onClick={(e)=>this.remove(ticket)} href="#">Delete</a></td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -66,6 +66,23 @@ class Tickets extends React.Component {
                         <input className="btn btn-success new-btn" value="New Ticket" type="button"/>
                     </div>
         }
+    }
+
+    remove(ticket){
+        fetch(properties.base_url + "tickets/" + ticket.id, {
+            method: "DELETE"
+        })
+        .then(res => res.json())
+        .then(
+            (result) => {
+                console.log(result);
+                this.componentDidMount();
+            },
+            (error) => {
+                console.log(error);
+                alert("Sorry. We had a problem when tried to remove data.")
+            }
+        )
     }
 }
 
