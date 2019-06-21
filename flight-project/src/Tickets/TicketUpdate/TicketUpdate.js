@@ -1,9 +1,11 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { properties } from '../properties';
+import { properties } from '../../properties';
 import $ from 'jquery';
+import PassengerSelect from '../../Passengers/PassengerSelect/PassengerSelect';
+import FlightSelect from '../../Flights/FlightSelect/FlightSelect';
 
-class FlightUpdate extends React.Component {
+class TicketUpdate extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,24 +26,14 @@ class FlightUpdate extends React.Component {
       <div>
         <Button color="success new-btn" onClick={this.toggle}>{this.props.buttonLabel}</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>New Flight</ModalHeader>
+          <ModalHeader toggle={this.toggle}>New Ticket</ModalHeader>
           <form id="passenger-form">
             <ModalBody>
+                <PassengerSelect></PassengerSelect>
+                <FlightSelect></FlightSelect>
                 <div class="form-group">
-                  <label for="origin">Origin</label>
-                  <input name="origin" maxLength="100" type="text" class="form-control" id="origin"/>
-                </div>
-                <div class="form-group">
-                  <label for="destination">Destination</label>
-                  <input name="destination" maxLength="100" type="text" class="form-control" id="destination"/>
-                </div>
-                <div class="form-group">
-                  <label for="departure">Departure Time</label>
-                  <input name="departure" maxLength="100" type="text" class="form-control" id="departure"/>
-                </div>
-                <div class="form-group">
-                  <label for="arrival">Arrival Time</label>
-                  <input name="arrival" maxLength="100" type="text" class="form-control" id="arrival"/>
+                  <label for="seat">Seat</label>
+                  <input name="seat" maxLength="10" type="text" class="form-control" id="seat"/>
                 </div>
             </ModalBody>
             <ModalFooter>
@@ -56,9 +48,9 @@ class FlightUpdate extends React.Component {
 
   handleSubmit(){
     var callBack = this.props.callBack;
-    fetch(properties.api_url + "flights/", {
+    fetch(properties.api_url + "tickets/", {
       method: "POST",
-      body: JSON.stringify({"origin":$("#origin").val(),"destination":$("#destination").val(),"departure_time":$("#departure").val(),"arrival_time":$("#arrival").val()}),
+      body: JSON.stringify({"passenger_id":$("#passengers").val(),"flight_id":$("#flights").val(),"seat":$("#seat").val()}),
       headers: {
         'Content-Type': 'application/json'
       }
@@ -78,4 +70,4 @@ class FlightUpdate extends React.Component {
   }
 }
 
-export default FlightUpdate;
+export default TicketUpdate;

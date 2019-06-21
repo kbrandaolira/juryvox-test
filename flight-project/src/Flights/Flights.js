@@ -2,7 +2,7 @@ import React, {Component}  from 'react';
 import '../App.css';
 import { properties } from '../properties';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import FlightUpdate from '../FlightUpdate/FlightUpdate';
+import FlightUpdate from './FlightUpdate/FlightUpdate';
 
 class Flights extends React.Component {
     constructor(){

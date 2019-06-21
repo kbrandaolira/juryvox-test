@@ -1,6 +1,7 @@
 import React, {Component}  from 'react';
 import { properties } from '../properties';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import TicketUpdate from './TicketUpdate/TicketUpdate';
 
 class Tickets extends React.Component {
     constructor(){
@@ -67,7 +68,7 @@ class Tickets extends React.Component {
                                 ))}
                             </tbody>
                         </table>
-                        <input className="btn btn-success new-btn" value="New Ticket" type="button"/>
+                        <TicketUpdate buttonLabel="New Ticket" callBack={this.componentDidMount.bind(this)}/>
                     </div>
         }
     }

@@ -1,8 +1,7 @@
 import React, {Component}  from 'react';
 import { properties } from '../properties';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import '../utils.js';
-import PassengerUpdate from '../PassengerUpdate/PassengerUpdate';
+import PassengerUpdate from './PassengerUpdate/PassengerUpdate';
 
 class Passengers extends React.Component {
     constructor(){
