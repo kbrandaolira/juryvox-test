@@ -77,7 +77,7 @@ class Passengers extends React.Component {
                                 ))}
                             </tbody>
                         </table>
-                        <PassengerUpdate buttonLabel="New Passenger"/>
+                        <PassengerUpdate buttonLabel="New Passenger" callBack={this.componentDidMount.bind(this)}/>
                     </div>
                     
         }

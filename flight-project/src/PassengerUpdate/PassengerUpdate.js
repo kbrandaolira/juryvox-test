@@ -41,8 +41,8 @@ class PassengerUpdate extends React.Component {
                 </div>
             </ModalBody>
             <ModalFooter>
-              <Button color="success" onClick={this.update}>Save</Button>{' '}
-              <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+              <Button color="success" onClick={this.handleSubmit.bind(this)}>Save</Button>{' '}
+              <Button id="close-btn" color="secondary" onClick={this.toggle}>Cancel</Button>
             </ModalFooter>
           </form>
         </Modal>
@@ -50,7 +50,8 @@ class PassengerUpdate extends React.Component {
     );
   }
 
-  update(){
+  handleSubmit(){
+    var callBack = this.props.callBack;
     fetch(properties.api_url + "passengers/", {
       method: "POST",
       body: JSON.stringify({"name":$("#name").val(),"gender":$("#gender").val()}),
@@ -62,6 +63,8 @@ class PassengerUpdate extends React.Component {
     .then(
         (result) => {
             console.log(result);
+            $("#close-btn").click();
+            callBack();
         },
         (error) => {
             console.log(error);
