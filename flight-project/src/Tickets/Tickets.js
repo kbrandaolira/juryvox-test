@@ -61,8 +61,14 @@ class Tickets extends React.Component {
                                         <td>{ticket.flight_id}</td>
                                         <td>{ticket.seat}</td>
                                         <td>
-                                            <button title="Edit"><FontAwesomeIcon icon="edit"/></button> &nbsp;
-                                            <button title="Delete" onClick={(e)=>this.remove(ticket)}><FontAwesomeIcon icon="trash-alt"/></button>
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                    <TicketUpdate ticketId={ticket.id} buttonLabel={<FontAwesomeIcon icon="edit"/>} callBack={this.componentDidMount.bind(this)}/> &nbsp;
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <button title="Delete" onClick={(e)=>this.remove(ticket)}><FontAwesomeIcon icon="trash-alt"/></button>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 ))}

@@ -9,10 +9,30 @@ class TicketUpdate extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
+      ticket: null
     };
 
     this.toggle = this.toggle.bind(this);
+  }
+
+  componentDidMount() {
+    fetch(properties.api_url + "tickets/" + this.props.ticketId)
+    .then(res => res.json())
+    .then(
+        (result) => {
+            this.setState({
+                isLoaded: true,
+                ticket: result
+            });
+        },
+        (error) => {
+            this.setState({
+                isLoaded: true,
+                error: error
+            });
+        }
+    )
   }
 
   toggle() {
@@ -22,18 +42,24 @@ class TicketUpdate extends React.Component {
   }
 
   render() {
+    const { error, isLoaded, ticket } = this.state;
     return (
       <div>
-        <Button color="success new-btn" onClick={this.toggle}>{this.props.buttonLabel}</Button>
+        {
+            this.props.ticketId != null ? 
+            <button title="Edit" onClick={this.toggle}>{this.props.buttonLabel}</button> : 
+            <Button color="success new-btn" onClick={this.toggle}>{this.props.buttonLabel}</Button>
+        }
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>New Ticket</ModalHeader>
           <form id="passenger-form">
             <ModalBody>
-                <PassengerSelect></PassengerSelect>
-                <FlightSelect></FlightSelect>
+                <input value={ticket != null ? ticket.id : ""} type="hidden" name="id" id="id"/>
+                <PassengerSelect defaultValue={ticket != null ? ticket.passenger_id : ""}></PassengerSelect>
+                <FlightSelect defaultValue={ticket != null ? ticket.flight_id : ""}></FlightSelect>
                 <div class="form-group">
                   <label htmlFor="seat">Seat</label>
-                  <input name="seat" maxLength="10" type="text" class="form-control" id="seat"/>
+                  <input defaultValue={ticket != null ? ticket.seat : ""} name="seat" maxLength="10" type="text" class="form-control" id="seat"/>
                 </div>
             </ModalBody>
             <ModalFooter>
@@ -48,8 +74,14 @@ class TicketUpdate extends React.Component {
 
   handleSubmit(){
     var callBack = this.props.callBack;
-    fetch(properties.api_url + "tickets/", {
-      method: "POST",
+    var method = "POST";
+
+    if($("#id").val() != ""){
+      method = "PATCH";
+    }
+
+    fetch(properties.api_url + "tickets/" + $("#id").val(), {
+      method: method,
       body: JSON.stringify({"passenger_id":$("#passengers").val(),"flight_id":$("#flights").val(),"seat":$("#seat").val()}),
       headers: {
         'Content-Type': 'application/json'

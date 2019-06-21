@@ -33,13 +33,14 @@ class PassengerSelect extends React.Component {
 
     render() {
         const { error, isLoaded, passengers } = this.state;
+        console.log(this.props.defaultValue);
         return (
             <div class="form-group">
                 <label htmlFor="passengers">Passenger</label>
                 <select name="passengers" class="form-control" id="passengers">
                     <option value="">Select</option>
                     {passengers.map(passenger => (
-                        <option value={passenger.id}>{passenger.name}</option>
+                        <option selected={passenger.id == this.props.defaultValue} value={passenger.id}>{passenger.name}</option>
                     ))}
                 </select>
             </div>

@@ -39,7 +39,7 @@ class FlightSelect extends React.Component {
                 <select name="flights" class="form-control" id="flights">
                     <option value="">Select</option>
                     {flights.map(flight => (
-                        <option value={flight.id}>{flight.origin} to {flight.destination} ({flight.departure_time} {flight.arrival_time})</option>
+                        <option selected={flight.id == this.props.defaultValue} value={flight.id}>{flight.origin} to {flight.destination} ({flight.departure_time} {flight.arrival_time})</option>
                     ))}
                 </select>
             </div>
