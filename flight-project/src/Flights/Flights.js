@@ -1,6 +1,7 @@
 import React, {Component}  from 'react';
 import '../App.css';
 import { properties } from '../properties';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Flights extends React.Component {
     constructor(){
@@ -63,7 +64,10 @@ class Flights extends React.Component {
                                         <td>{flight.destination}</td>
                                         <td>{flight.departure_time}</td>
                                         <td>{flight.arrival_time}</td>
-                                        <td><a href="#">Edit</a> / <a onClick={(e)=>this.remove(flight)} href="#">Delete</a></td>
+                                        <td>
+                                            <button title="Edit"><FontAwesomeIcon icon="edit"/></button> &nbsp;
+                                            <button title="Delete" onClick={(e)=>this.remove(flight)}><FontAwesomeIcon icon="trash-alt"/></button>
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>

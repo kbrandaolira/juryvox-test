@@ -1,5 +1,6 @@
 import React, {Component}  from 'react';
 import { properties } from '../properties';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Passengers extends React.Component {
     constructor(){
@@ -60,7 +61,10 @@ class Passengers extends React.Component {
                                         <td>{passenger.name}</td>
                                         <td>{passenger.gender}</td>
                                         <td><input type="checkbox" disabled/></td>
-                                        <td><a href="#">Edit</a> / <a onClick={(e)=>this.remove(passenger)} href="#">Delete</a></td>
+                                        <td>
+                                            <button title="Edit"><FontAwesomeIcon icon="edit"/></button> &nbsp;
+                                            <button title="Delete" onClick={(e)=>this.remove(passenger)}><FontAwesomeIcon icon="trash-alt"/></button>
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
