@@ -66,14 +66,8 @@ class Flights extends React.Component {
                                         <td>{flight.departure_time}</td>
                                         <td>{flight.arrival_time}</td>
                                         <td>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <FlightUpdate flightId={flight.id} buttonLabel={<FontAwesomeIcon icon="edit"/>} callBack={this.componentDidMount.bind(this)}/> &nbsp;
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <button title="Delete" onClick={(e)=>this.remove(flight)}><FontAwesomeIcon icon="trash-alt"/></button>
-                                                </div>
-                                            </div>
+                                            <FlightUpdate flightId={flight.id} buttonLabel={<FontAwesomeIcon icon="edit"/>} callBack={this.componentDidMount.bind(this)}/> &nbsp;
+                                            <button title="Delete" onClick={(e)=>this.remove(flight)}><FontAwesomeIcon icon="trash-alt"/></button>
                                         </td>
                                     </tr>
                                 ))}

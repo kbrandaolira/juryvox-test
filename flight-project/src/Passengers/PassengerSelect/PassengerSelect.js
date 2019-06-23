@@ -33,7 +33,6 @@ class PassengerSelect extends React.Component {
 
     render() {
         const { error, isLoaded, passengers } = this.state;
-        console.log(this.props.defaultValue);
         return (
             <div class="form-group">
                 <label htmlFor="passengers">Passenger</label>

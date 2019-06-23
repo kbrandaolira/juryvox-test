@@ -42,7 +42,7 @@ class PassengerUpdate extends React.Component {
   render() {
     const { error, isLoaded, passenger } = this.state;
     return (
-      <div>
+      <div className="actions-btn">
         {
             this.props.passengerId != null ? 
             <button title="Edit" onClick={this.toggle}>{this.props.buttonLabel}</button> : 

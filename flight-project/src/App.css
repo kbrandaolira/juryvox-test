@@ -1,3 +1,7 @@
 .new-btn{
     float:right;margin-right:10px;
 }
+
+.actions-btn{
+    display:inline;
+}

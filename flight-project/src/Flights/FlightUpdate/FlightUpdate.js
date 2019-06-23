@@ -43,7 +43,7 @@ class FlightUpdate extends React.Component {
   render() {
     const { error, isLoaded, flight } = this.state;
     return (
-      <div>
+      <div className="actions-btn">
         {
             this.props.flightId != null ? 
             <button title="Edit" onClick={this.toggle}>{this.props.buttonLabel}</button> : 

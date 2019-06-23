@@ -44,7 +44,7 @@ class TicketUpdate extends React.Component {
   render() {
     const { error, isLoaded, ticket } = this.state;
     return (
-      <div>
+      <div className="actions-btn">
         {
             this.props.ticketId != null ? 
             <button title="Edit" onClick={this.toggle}>{this.props.buttonLabel}</button> : 

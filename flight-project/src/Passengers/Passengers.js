@@ -69,14 +69,8 @@ class Passengers extends React.Component {
                                             }
                                         </td>
                                         <td>
-                                             <div class="row">
-                                                <div class="col-md-2">
-                                                    <PassengerUpdate passengerId={passenger.id} buttonLabel={<FontAwesomeIcon icon="edit"/>} callBack={this.componentDidMount.bind(this)}/> &nbsp;
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <button title="Delete" onClick={(e)=>this.remove(passenger)}><FontAwesomeIcon icon="trash-alt"/></button>
-                                                </div>
-                                            </div>
+                                            <PassengerUpdate passengerId={passenger.id} buttonLabel={<FontAwesomeIcon icon="edit"/>} callBack={this.componentDidMount.bind(this)}/> &nbsp;
+                                            <button title="Delete" onClick={(e)=>this.remove(passenger)}><FontAwesomeIcon icon="trash-alt"/></button>
                                         </td>
                                     </tr>
                                 ))}
